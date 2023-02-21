@@ -1,12 +1,7 @@
-import React, {useState, useContext} from "react";
-import NoteContext from "../Contexts/Notes/noteContext";
+import React from "react";
+import Notes from "./Notes";
 
 function Home() {
-  const notesContext = useContext(NoteContext);
-
-  const notes = notesContext.notes;
-  console.log(notes);
-
   return (
     <>
       <h2>Create a note : </h2>
@@ -44,10 +39,7 @@ function Home() {
         </button>
       </form>
 
-      <h2>Your Notes : </h2>
-      {notes.map((note) => {
-        return note.title;
-      })}
+      <Notes/>
     </>
   );
 }
