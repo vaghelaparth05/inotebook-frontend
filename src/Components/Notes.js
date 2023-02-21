@@ -6,13 +6,13 @@ function Notes(props) {
   const notesContext = useContext(NoteContext);
 
   const notes = notesContext.notes;
-  console.log(notes);
+  const addNote = NoteContext.addNote;
   return (
     <>
       <h2>Your Notes : </h2>
       <div className="row my-3">
       {notes.map((note) => {
-        return <Noteitem note={note} />;
+        return <Noteitem key={note._id} note={note} addNote={addNote}/>;
       })}
       </div>
     </>
