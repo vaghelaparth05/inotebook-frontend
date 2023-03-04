@@ -9,18 +9,19 @@ export default function Addnote() {
   const handleClick = (event) => {
     event.preventDefault();
     addNote(note.title, note.description, note.tags);
+    setNote({title: "", description: "", tags: ""});
   };
 
   const onChange = (event) => {
     event.preventDefault();
-    setNote({...note, [event.target.name]: [event.target.value]});
+    setNote({...note, [event.target.name]: event.target.value});
   };
   return (
     <>
       <h2>Create a note : </h2>
       <form>
         <div className="form-group my-3">
-          <label htmlFor="title">Title</label>
+          <label className="fw-bold mb-2" htmlFor="title">Title</label>
           <input
             type="text"
             className="form-control"
@@ -28,18 +29,26 @@ export default function Addnote() {
             name="title"
             aria-describedby="emailHelp"
             onChange={onChange}
-            placeholder="Enter email"
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="description">Password</label>
+        <div className="form-group my-3">
+          <label className="fw-bold mb-2" htmlFor="description">Description</label>
           <input
             type="text"
             className="form-control"
             id="description"
             name="description"
             onChange={onChange}
-            placeholder="Password"
+          />
+        </div>
+        <div className="form-group my-3">
+          <label className="fw-bold mb-2" htmlFor="tags">Tag</label>
+          <input
+            type="text"
+            className="form-control"
+            id="tags"
+            name="tags"
+            onChange={onChange}
           />
         </div>
         <button

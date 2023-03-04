@@ -1,4 +1,4 @@
-import React ,{useEffect} from "react";
+import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
 function Navbar() {
@@ -9,7 +9,7 @@ function Navbar() {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-2">
         <Link className="navbar-brand" to="/">
           iNotebook
         </Link>
@@ -28,16 +28,35 @@ function Navbar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <Link className={`nav-link ${location.pathname === "/" ? 'active' : ""}`} to="/">
+              <Link
+                className={`nav-link ${
+                  location.pathname === "/" ? "active" : ""
+                }`}
+                to="/"
+              >
                 Home <span className="sr-only">(current)</span>
               </Link>
             </li>
             <li className="nav-item">
-              <Link className={`nav-link ${location.pathname === "/about" ? 'active' : ""}`} to="/about">
+              <Link
+                className={`nav-link ${
+                  location.pathname === "/about" ? "active" : ""
+                }`}
+                to="/about"
+              >
                 About
               </Link>
             </li>
           </ul>
+
+          <div className="ms-auto">
+              <Link className="btn btn-primary me-3" to="/login" role="button">
+                Login
+              </Link>
+              <Link className="btn btn-primary me-3" to="/signup" role="button">
+                Signup
+              </Link>
+          </div>
         </div>
       </nav>
     </>
