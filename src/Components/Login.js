@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate} from 'react-router-dom';
-const Login = () => {
+const Login = (props) => {
   const host = "http://localhost:5000";
   const navigate = useNavigate();
 
@@ -24,8 +24,9 @@ const Login = () => {
       // save authtoken to localStorage
       localStorage.setItem('notesToken', json.authToken);
       navigate("/");
+      props.sendAlert("Logged in Successfully", "success");
     } else{
-      alert("Invalid Credentails");
+      props.sendAlert("Please enter correct details.", "danger");
     }
   };
 
@@ -35,9 +36,10 @@ const Login = () => {
 
   return (
     <>
+    <h2 className="mt-5 mb-3"> Login into Notes : </h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">
+          <label htmlFor="exampleInputEmail1" className="form-label fw-bold">
             Email address
           </label>
           <input
@@ -51,7 +53,7 @@ const Login = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">
+          <label htmlFor="exampleInputPassword1" className="form-label fw-bold">
             Password
           </label>
           <input

@@ -3,9 +3,10 @@ import { Link, useLocation } from "react-router-dom";
 
 function Navbar() {
   let location = useLocation();
-  // useEffect(()=> {
 
-  // }, [location]);
+  const handleLogout = () => {
+    localStorage.removeItem("notesToken");
+  };
 
   return (
     <>
@@ -48,15 +49,27 @@ function Navbar() {
               </Link>
             </li>
           </ul>
-
-          <div className="ms-auto">
+          {localStorage.getItem("notesToken") ? (
+            <div className="ms-auto">
+              <Link
+                className="btn btn-primary me-3"
+                to="/login"
+                onClick={handleLogout}
+                role="button"
+              >
+                Logout
+              </Link>
+            </div>
+          ) : (
+            <div className="ms-auto">
               <Link className="btn btn-primary me-3" to="/login" role="button">
                 Login
               </Link>
               <Link className="btn btn-primary me-3" to="/signup" role="button">
                 Signup
               </Link>
-          </div>
+            </div>
+          )}
         </div>
       </nav>
     </>

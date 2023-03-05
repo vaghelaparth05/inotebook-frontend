@@ -2,12 +2,12 @@ import React from "react";
 import Addnote from "./Addnote";
 import Notes from "./Notes";
 
-function Home() {
+function Home(props) {
   return (
     <>
-      <Addnote/>
+      <Addnote sendAlert={props.sendAlert}/>
 
-      <Notes/>
+      <Notes sendAlert={props.sendAlert}/>
     </>
   );
 }
